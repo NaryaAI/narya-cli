@@ -7,30 +7,32 @@ and interacting with PNM services.
 
 ## Installation
 
-To install pnm, download the latest release from our [GitHub releases page](https://github.com/PwnedNoMore/pnm-cli/releases) and extract the binary to a directory in your `$PATH`.
+To install `pnm`, download the latest release from our [GitHub releases page](https://github.com/PwnedNoMore/pnm-cli/releases) and extract the binary to a directory in your `$PATH`.
 
 ## Usage
 
-### pnm init
+### `pnm init`
 
 Use the `pnm init` subcommand to initialize your PNM project.
 
 This command will install the dependencies and PNM SDK, create test/pnm directory, and setup remapping to use the PNM SDK.
 
-### pnm build
+### `pnm build`
 
 Use the `pnm build` subcommand to build your project.
 
 It will compile your project and output the result to the build directory.
 You can use it for a quick test see if your project satisfies the compiler.
 
-### pnm test
+### `pnm test`
 
 Use the `pnm test` subcommand to run [PNM invariant and property tests](https://pwned-no-more.notion.site/Property-test-and-invariant-test-c6b80f6b6136408ba41247c0be561fe2) for your project.
 
 It will compile your project and run the tests, so you don't have to compile it manually.
 
-### pnm template
+You can use this command to test if the test cases are written correctly before commit and push.
+
+### `pnm template`
 
 Use the `pnm template` subcommand to work with PNM templates.
 PNM templates are a set of pre-written invariant tests that you can use to test your smart contract.
