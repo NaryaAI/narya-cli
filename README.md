@@ -13,6 +13,11 @@ Use the `pnm init` subcommand to init your project.
 
 This command can install the dependencies and PNM SDK for your project, initialize test/pnm directory, and setup remapping for your project.
 
+#### Examples
+To initialize a project, run the following command in the root directory of your project:
+
+> pnm init
+
 ### pnm build
 
 Use the `pnm build` subcommand to build your project.
