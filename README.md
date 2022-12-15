@@ -1,53 +1,63 @@
 # PNM CLI
 
 ## Introduction
-The pnm command line interface (CLI) tool is a utility for building, testing, and managing projects. It contains four subcommands: init, build, template, and test.
+
+The pnm command line tool is a utility for building and testing your smart contract project,
+and interacting with PNM services.
 
 ## Installation
-To install pnm, download the latest release from our GitHub releases page and extract the binary to a directory in your PATH.
+
+To install pnm, download the latest release from our [GitHub releases page](https://github.com/PwnedNoMore/pnm-cli/releases){:target="_blank"} and extract the binary to a directory in your `$PATH`.
 
 ## Usage
 
 ### pnm init
-Use the `pnm init` subcommand to init your project.
 
-This command can install the dependencies and PNM SDK for your project, initialize test/pnm directory, and setup remapping for your project.
+Use the `pnm init` subcommand to initialize your PNM project.
 
-#### Examples
-To initialize a project, run the following command in the root directory of your project:
-
-> pnm init
+This command will install the dependencies and PNM SDK, create test/pnm directory, and setup remapping to use the PNM SDK.
 
 ### pnm build
 
 Use the `pnm build` subcommand to build your project.
 
-#### Examples
-To build your project and output the result to the build directory, run:
-
-> pnm build
-
-### pnm template
-Use the pnm template subcommand to manage templates. It accepts the following options:
-
-- --install: Install a project template
-
-#### Examples
-To list available templates, run:
-
-> pnm template
-
-To install the basic template, run:
-
-> pnm template --install basic
+It will compile your project and output the result to the build directory.
+You can use it for a quick test see if your project satisfies the compiler.
 
 ### pnm test
-Use the pnm test subcommand to run tests for your project.
+
+Use the `pnm test` subcommand to run [PNM invariant and property tests](https://pwned-no-more.notion.site/Property-test-and-invariant-test-c6b80f6b6136408ba41247c0be561fe2){:target="_blank"} for your project.
+
+It will compile your project and run the tests, so you don't have to compile it manually.
+
+### pnm template
+
+Use the `pnm template` subcommand to work with PNM templates.
+PNM templates are a set of pre-written invariant tests that you can use to test your smart contract.
+You have to fill in the preprepared getter functions to make it work for your project.
+It is a good starting point for writing your own tests.
 
 #### Examples
-To run tests for your project, run:
 
-> pnm test
+To list available templates, run:
+
+```shell
+$ pnm template
+Templates available:
+	FundLossTest
+	OwnerNotChangedTest
+	WithdrawWhatDepositTest
+```
+
+To install the `FundLossTest` template, run:
+
+```shell
+$ pnm template --install FundLossTest
+Installing template: [FundLossTest]
+Installed template: [FundLossTest] to [test/pnm/FundLossTest_1671118266.sol].
+```
 
 ### Support
-If you encounter any issues or have questions about using PNM CLI, please open an issue on our GitHub page or join our Discord server,  and we will be happy to assist you.
+
+If you encounter any issues, have questions about using PNM CLI, or any feedback,
+please contact us in our Discord server. We will be happy to assist you.
