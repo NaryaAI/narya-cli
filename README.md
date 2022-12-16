@@ -59,6 +59,14 @@ Installing template: [FundLossTest]
 Installed template: [FundLossTest] to [test/pnm/FundLossTest_1671118266.sol].
 ```
 
+### Troubleshooting
+
+You may see the following error message when you try to run `pnm` in macOS:
+
+> can’t be opened because Apple cannot check it for malicious software
+
+You can right click on the app in your Finder, and then click on `Open`. The system will ask you to allow it. Once allowed, you can run the command in the terminal.
+
 ### Support
 
 If you encounter any issues, have questions about using PNM CLI, or any feedback,
