@@ -10,7 +10,7 @@ main() {
 
   need_cmd curl
 
-  # Create the .pnm bin directory and pnmup binary if it doesn't exist.
+  # Create the .pnm bin directory and pnm binary if it doesn't exist.
   mkdir -p $PNM_BIN_DIR
 
   # Create the man directory for future man files if it doesn't exist.
@@ -39,9 +39,9 @@ main() {
       exit 1
   esac
 
-  # Only add pnmup if it isn't already in PATH.
+  # Only add pnm if it isn't already in PATH.
   if [[ ":$PATH:" != *":${PNM_BIN_DIR}:"* ]]; then
-      # Add the pnmup directory to the path and ensure the old PATH variables remain.
+      # Add the pnm directory to the path and ensure the old PATH variables remain.
       echo >> $PROFILE && echo "export PATH=\"\$PATH:$PNM_BIN_DIR\"" >> $PROFILE
   fi
 
@@ -80,7 +80,7 @@ main() {
   BIN_TARBALL_URL="${RELEASE_URL}pnm-${ARCHITECTURE}-${PLATFORM}.tar.gz"
 
   #TODO: @zek65535 add manpage in the future
-  #MAN_TARBALL_URL="${RELEASE_URL}pnm_man_${PNMUP_VERSION}.tar.gz"
+  #MAN_TARBALL_URL="${RELEASE_URL}pnm_man_${PNM_VERSION}.tar.gz"
 
   # Download the binaries tarball and unpack it into the .pnm bin directory.
   say "downloading latest pnm"
@@ -95,7 +95,7 @@ main() {
 }
 
 say() {
-  printf 'pnmup: %s\n' "$1"
+  printf 'pnm: %s\n' "$1"
 }
 
 warn() {
