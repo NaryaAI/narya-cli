@@ -4,8 +4,29 @@ set -e
 PNM_DIR=${PNM_DIR-"$HOME/.pnm"}
 PNM_BIN_DIR="$PNM_DIR/bin"
 PNM_MAN_DIR="$PNM_DIR/share/man/man1"
+PNM_REPO="PwnedNoMore/pnm-cli"
 
 main() {
+
+  # get the version of pnm
+  VERSION="$(pnm --version 2>/dev/null | cut -d' ' -f2)"
+
+  if [[ ! -z "$VERSION" ]]; then
+    echo "pnm is already installed, version $VERSION"
+
+    # check latest version of pnm from: tag_name of https://api.github.com/repos/PwnedNoMore/pnm-cli/releases/latest
+    LATEST_VERSION="$(curl -s https://api.github.com/repos/$PNM_REPO/releases/latest | grep tag_name | cut -d'"' -f4)"
+
+    echo "Latest pnm version is $LATEST_VERSION"
+
+    # if Latest version is equal to installed version, exit
+    if [[ "$LATEST_VERSION" == "$VERSION" ]]; then
+      echo "You are already using the latest version of pnm"
+      exit 0
+    fi
+
+  fi
+
   say "Installing pnm..."
 
   need_cmd curl
@@ -44,8 +65,6 @@ main() {
       # Add the pnm directory to the path and ensure the old PATH variables remain.
       echo >> $PROFILE && echo "export PATH=\"\$PATH:$PNM_BIN_DIR\"" >> $PROFILE
   fi
-
-  PNM_REPO="PwnedNoMore/pnm-cli"
 
   PLATFORM="$(uname -s)"
   case $PLATFORM in
