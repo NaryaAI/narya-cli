@@ -7,7 +7,7 @@ and interacting with PNM services.
 
 ## Installation
 
-To install pnm, run the command below to get the latest version of pnm:
+To install the latest version of pnm, run the command below:
 
 ```bash
 curl -L https://raw.githubusercontent.com/PwnedNoMore/pnm-cli/main/script/install | bash
