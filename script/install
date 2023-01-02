@@ -64,7 +64,7 @@ main() {
     # Only add pnm if it isn't already in PATH.
     if [[ ":$PATH:" != *":${PNM_BIN_DIR}:"* ]]; then
         # Add the pnm directory to the path and ensure the old PATH variables remain.
-        echo >> $PROFILE && echo "export PATH=\"\$PATH:$PNM_BIN_DIR\"" >> $PROFILE
+        echo >> $PROFILE && echo "export PATH=\"$PNM_BIN_DIR:\$PATH\"" >> $PROFILE
     fi
   fi
 
