@@ -21,12 +21,12 @@ If everything goes well, you will now have a binaries at your disposal: pnm.
 To update PNM CLI after installation, simply run:
 ```shell
 $ pnm upgrade
-pnm is already installed, version 0.1.0
-Latest pnm version is 0.0.1
+pnm is already installed, version 0.0.1
+Latest pnm version is 0.1.0
 pnm: Installing pnm...
 pnm: downloading latest pnm
 ######################################################################## 100.0%
-pnm: installed - pnm 0.0.1 (f9e4d2e 2022-12-19T05:24:17.307483Z)
+pnm: installed - pnm 0.1.0 (f9e4d2e 2022-01-02T05:24:17.307483Z)
 ```
 
 It will update to the latest PNM release.
@@ -93,6 +93,10 @@ Time: 26s
 
 The following invariant(s) reverted, it's likely the PNM engine will also fail if push as-is.
 • File: test/pnm/OwnerNotChangedTest_1672380141.sol, Contract: OwnerNotChangedTest, Function: invariantOwnerNotChanged()
+
+A Test report generated at ./reports/report_1672973405.zip. To view the report, visit the following URL and upload the report zip file:
+
+https://app.pwnednomore.org/debugger
 
 Please refer to the call trace for more information and try running the test again after fixing the issue.
 ```
