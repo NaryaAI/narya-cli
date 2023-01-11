@@ -125,9 +125,10 @@ To install a template, run `pnm template --install <template-name>`
 To install the `FundLossTest` template, run:
 
 ```shell
-$ pnm template --install FundLossTest
-Installing template: [FundLossTest]
-Installed template: [FundLossTest] to [test/pnm/FundLossTest_1671118266.sol].
+$ pnm template --install DepositWithdrawalFailureTest
+Please open the file test/pnm/DepositWithdrawalFailureTestImpl_1673423822.sol and follow the TODO instructions within it to complete the template.
+Installing template: UnboundedProfitTest
+Installed template UnboundedProfitTest to test/pnm/UnboundedProfitTestImpl_1673423824.sol.
 ```
 
 ### CLI Data Collection and Metrics
