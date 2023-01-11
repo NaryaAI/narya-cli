@@ -115,9 +115,11 @@ To list available templates, run:
 ```shell
 $ pnm template
 Templates available:
-	FundLossTest
-	OwnerNotChangedTest
-	WithdrawWhatDepositTest
+• DepositWithdrawalFailureTest
+• UnboundedProfitTest
+• UnprotectedOwnershipTest
+
+To install a template, run `pnm template --install <template-name>`
 ```
 
 To install the `FundLossTest` template, run:
