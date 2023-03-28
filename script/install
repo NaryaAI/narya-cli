@@ -1,41 +1,41 @@
 #!/usr/bin/env bash
 set -e
 
-PNM_DIR=${PNM_DIR-"$HOME/.pnm"}
-PNM_BIN_DIR="$PNM_DIR/bin"
-PNM_MAN_DIR="$PNM_DIR/share/man/man1"
-PNM_REPO="PwnedNoMore/pnm-cli"
+NARYA_DIR=${NARYA_DIR-"$HOME/.narya-ai"}
+NARYA_BIN_DIR="$NARYA_DIR/bin"
+NARYA_MAN_DIR="$NARYA_DIR/share/man/man1"
+NARYA_REPO="NaryaAi/narya-cli"
 
 main() {
 
-  # get the version of pnm
-  VERSION="$(pnm --version 2>/dev/null | cut -d' ' -f2)"
+  # get the version of narya
+  VERSION="$(narya --version 2>/dev/null | cut -d' ' -f2)"
 
   if [[ ! -z "$VERSION" ]]; then
-    echo "pnm is already installed, version $VERSION"
+    echo "narya is already installed, version $VERSION"
 
-    # check latest version of pnm from: tag_name of https://api.github.com/repos/PwnedNoMore/pnm-cli/releases/latest
-    LATEST_VERSION="$(curl -s https://api.github.com/repos/$PNM_REPO/releases/latest | grep tag_name | cut -d'"' -f4)"
+    # check latest version of narya from: tag_name of https://api.github.com/repos/NaryaAi/narya-cli/releases/latest
+    LATEST_VERSION="$(curl -s https://api.github.com/repos/$NARYA_REPO/releases/latest | grep tag_name | cut -d'"' -f4)"
 
-    echo "Latest pnm version is $LATEST_VERSION"
+    echo "Latest narya version is $LATEST_VERSION"
 
     # if Latest version is equal to installed version, exit
     if [[ "$LATEST_VERSION" == "$VERSION" ]]; then
-      echo "You are already using the latest version of pnm"
+      echo "You are already using the latest version of narya"
       exit 0
     fi
 
   fi
 
-  say "Installing pnm..."
+  say "Installing narya..."
 
   need_cmd curl
 
-  # Create the .pnm bin directory and pnm binary if it doesn't exist.
-  mkdir -p $PNM_BIN_DIR
+  # Create the .narya-ai bin directory and narya binary if it doesn't exist.
+  mkdir -p $NARYA_BIN_DIR
 
   # Create the man directory for future man files if it doesn't exist.
-  mkdir -p $PNM_MAN_DIR
+  mkdir -p $NARYA_MAN_DIR
 
   if [ -z "$VERSION" ]; then
     # Store the correct profile file (i.e. .profile for bash or .zshrc for ZSH).
@@ -57,14 +57,14 @@ main() {
         PREF_SHELL=ash
         ;;
     *)
-        say "could not detect shell, manually add ${PNM_BIN_DIR} to your PATH."
+        say "could not detect shell, manually add ${NARYA_BIN_DIR} to your PATH."
         exit 1
     esac
 
-    # Only add pnm if it isn't already in PATH.
-    if [[ ":$PATH:" != *":${PNM_BIN_DIR}:"* ]]; then
-        # Add the pnm directory to the path and ensure the old PATH variables remain.
-        echo >> $PROFILE && echo "export PATH=\"$PNM_BIN_DIR:\$PATH\"" >> $PROFILE
+    # Only add narya if it isn't already in PATH.
+    if [[ ":$PATH:" != *":${NARYA_BIN_DIR}:"* ]]; then
+        # Add the narya directory to the path and ensure the old PATH variables remain.
+        echo >> $PROFILE && echo "export PATH=\"$NARYA_BIN_DIR:\$PATH\"" >> $PROFILE
     fi
   fi
 
@@ -95,30 +95,26 @@ main() {
     ARCHITECTURE="x86_64" # Amd.
   fi
 
-  # Compute the URL of the release tarball in the pnm repository.
-  RELEASE_URL="https://github.com/${PNM_REPO}/releases/latest/download/"
+  # Compute the URL of the release tarball in the narya repository.
+  RELEASE_URL="https://github.com/${NARYA_REPO}/releases/latest/download/"
 
-  BIN_TARBALL_URL="${RELEASE_URL}pnm-${ARCHITECTURE}-${PLATFORM}.tar.gz"
+  BIN_TARBALL_URL="${RELEASE_URL}narya-${ARCHITECTURE}-${PLATFORM}.tar.gz"
 
-  #TODO: @zek65535 add manpage in the future
-  #MAN_TARBALL_URL="${RELEASE_URL}pnm_man_${PNM_VERSION}.tar.gz"
+  # Download the binaries tarball and unpack it into the .narya-ai bin directory.
+  say "downloading latest narya"
+  ensure curl -# -L $BIN_TARBALL_URL | tar -xzC $NARYA_BIN_DIR
 
-  # Download the binaries tarball and unpack it into the .pnm bin directory.
-  say "downloading latest pnm"
-  ensure curl -# -L $BIN_TARBALL_URL | tar -xzC $PNM_BIN_DIR
-
-  # Download the man tarball and unpack it into the .pnm man directory.
-  #say "downloading manpages"
-  #ensure curl -# -L $MAN_TARBALL_URL | tar -xzC $PNM_MAN_DIR
-
-  say "installed - $($PNM_BIN_DIR/pnm --version)"
+  say "installed - $($NARYA_BIN_DIR/narya --version)"
   if [ -z "$VERSION" ]; then
-    say "Detected your preferred shell is ${PREF_SHELL} and added pnm to PATH. Run 'source ${PROFILE}' or start a new terminal session to use pnm."
+    say "Detected your preferred shell is ${PREF_SHELL} and added narya to PATH. Run 'source ${PROFILE}' or start a new terminal session to use narya."
   fi
+
+  # Cleanup old binary
+  [ -d "$HOME/.pnm" ] &&`rm -r $HOME/.pnm/; true`
 }
 
 say() {
-  printf 'pnm: %s\n' "$1"
+  printf 'narya: %s\n' "$1"
 }
 
 warn() {
