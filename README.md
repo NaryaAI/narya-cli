@@ -13,7 +13,7 @@ To install Narya CLI, open your terminal and type in the following command:
 curl -L https://raw.githubusercontent.com/NaryaAi/Narya-cli/main/script/install | bash
 ```
 
-This command will download Narya CLI to `~/.narya-ai` and add it to your `$PATH`.
+This command will download Narya CLI to `~/.narya` and add it to your `$PATH`.
 
 If the installation is successful, you can run the Narya command from your shell.
 
@@ -128,7 +128,7 @@ such as which commands you run and how long they take to complete.
 If you would prefer to opt out of metrics upload, you can run:
 
 ```bash
-touch ~/.narya-ai/.metrics_disabled
+touch ~/.narya/.metrics_disabled
 ```
 
 or set the environment variable `NARYA_DISABLE_METRICS` to `true`:
