@@ -106,7 +106,8 @@ main() {
 
   say "installed - $($NARYA_BIN_DIR/narya --version)"
   if [ -z "$VERSION" ]; then
-    say "Detected your preferred shell is ${PREF_SHELL} and added narya to PATH. Run 'source ${PROFILE}' or start a new terminal session to use narya."
+    say "Detected your preferred shell is ${PREF_SHELL} and added narya to PATH. Start a new terminal session to use narya."
+    say "To enable in the current session, run 'source ${PROFILE}'"
   fi
 
   # Cleanup old binary
