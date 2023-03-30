@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-NARYA_DIR=${NARYA_DIR-"$HOME/.narya-ai"}
+NARYA_DIR=${NARYA_DIR-"$HOME/.narya"}
 NARYA_BIN_DIR="$NARYA_DIR/bin"
 NARYA_MAN_DIR="$NARYA_DIR/share/man/man1"
 NARYA_REPO="NaryaAi/narya-cli"
@@ -31,7 +31,7 @@ main() {
 
   need_cmd curl
 
-  # Create the .narya-ai bin directory and narya binary if it doesn't exist.
+  # Create the bin directory and narya binary if it doesn't exist.
   mkdir -p $NARYA_BIN_DIR
 
   # Create the man directory for future man files if it doesn't exist.
@@ -100,7 +100,7 @@ main() {
 
   BIN_TARBALL_URL="${RELEASE_URL}narya-${ARCHITECTURE}-${PLATFORM}.tar.gz"
 
-  # Download the binaries tarball and unpack it into the .narya-ai bin directory.
+  # Download the binaries tarball and unpack it into the bin directory.
   say "downloading latest narya"
   ensure curl -# -L $BIN_TARBALL_URL | tar -xzC $NARYA_BIN_DIR
 
