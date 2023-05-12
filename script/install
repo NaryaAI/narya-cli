@@ -111,7 +111,9 @@ main() {
   fi
 
   # Cleanup old binary
-  [ -d "$HOME/.pnm" ] &&`rm -r $HOME/.pnm/; true`
+  [ -d "$HOME/.pnm" ] && `rm -r $HOME/.pnm/; true`
+
+  exit 0
 }
 
 say() {
